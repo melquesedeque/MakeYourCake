@@ -14,31 +14,32 @@ export class LoginPage implements OnInit {
   verificarSenha = false;
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private rotas:Router) {
+  constructor(private formBuilder: FormBuilder, private rotas: Router) {
   }
 
   ngOnInit() {
     this.msg = "";
     this.formulario = this.formBuilder.group({
-      email: ['melque@gmail.com', [Validators.email, Validators.required]],
-      senha: ['123456', [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   validarLogin() {
     if ((this.formulario.get('email').value === 'melque@gmail.com') && this.formulario.get('email').valid) {
       this.verificarEMail = true;
+
+      if ((this.formulario.get('senha').value === "123456") && this.formulario.get('senha').valid) {
+        this.verificarSenha = true;
+      } else {
+        this.msg = "Senha Invalida!";
+      }
+
     } else {
       this.msg = "E-mail Invalido!";
     }
 
-    if ((this.formulario.get('senha').value === "123456") && this.formulario.get('senha').valid) {
-      this.verificarSenha = true;
-    } else {
-      this.msg = "Senha Invalida!";
-    }
-
-    if(this.verificarEMail && this.verificarSenha){
+    if (this.verificarEMail && this.verificarSenha) {
       this.rotas.navigateByUrl("/consultar-produtos");
       AutenticarGuardGuard.podeAcessar = true;
     }

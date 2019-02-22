@@ -11,14 +11,15 @@ ion-card{
     --background: rgb(243, 241, 237);
 }
 
-#bntVoltar{
+#btnVoltar{
     color:white;
 }
 
 #imagemLogo{
-    max-width: 30%; 
+    max-width: 30%;
+    height: 85%;
     position: fixed; 
-    top: 10px; 
+    top: 5px; 
     left: 50%; 
     margin-right: -50%; 
     transform: translate(-50%, -0%) 

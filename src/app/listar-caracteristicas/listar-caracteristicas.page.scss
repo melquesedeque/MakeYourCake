@@ -1,0 +1,27 @@
+ion-content, ion-toolbar{
+    --background:rgba(251, 6, 6, 0.94);
+}
+
+#btnVoltar{
+    color:white;
+}
+
+#imagemLogo{
+    max-width: 30%; 
+    position: fixed;
+    height: 85%;
+    top: 5px; 
+    left: 50%; 
+    margin-right: -50%; 
+    transform: translate(-50%, -0%) 
+}
+
+ion-card{
+    --background: rgb(243, 241, 237);
+}
+
+.imgcard{
+    border: 10px;
+    width: 100%;
+    height: 100%;
+}

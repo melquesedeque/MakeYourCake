@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 
 @Component({
   selector: 'app-consultar-produtos',
@@ -10,9 +12,6 @@ export class ConsultarProdutosPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  pegarIdBolo(nomeBolo){
-    console.log(nomeBolo);
+    
   }
 }
