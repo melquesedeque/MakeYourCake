@@ -12,4 +12,7 @@ export class ConsultarProdutosPage implements OnInit {
   ngOnInit() {
   }
 
+  pegarIdBolo(nomeBolo){
+    console.log(nomeBolo);
+  }
 }

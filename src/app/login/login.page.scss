@@ -41,3 +41,15 @@ ion-item {
     margin-right: -50%; 
     transform: translate(-50%, -0%) 
 }
+
+#msg{
+    background-color:rgba(255, 254, 254, 0.418);
+    border-radius: 10px;
+    color: white;
+    margin-top: -1px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
