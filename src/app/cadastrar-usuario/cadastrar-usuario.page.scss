@@ -2,24 +2,24 @@ ion-content{
     --background: linear-gradient(to bottom, rgb(250, 11, 11), rgb(51, 19, 8));;
 }
 
-#divLogin{
+#divCadastro{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#divLogin2{
+#divCadastro2{
     border-radius: 15px;
     width: 100vh;
-    padding: 10px;
+    padding: 10px
 }
 
 h2{
     text-align: center !important; 
     font-size: 30px;
     font-style: unset;
-    margin-top: 5%;
+    margin-top: 10%;
     color: white;
 }
 

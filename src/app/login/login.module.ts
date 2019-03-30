@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, MenuController } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
 
@@ -24,4 +24,12 @@ const routes: Routes = [
   ],
   declarations: [LoginPage]
 })
-export class LoginPageModule {}
+export class LoginPageModule {
+
+  constructor(private menu:MenuController){}
+
+  ionViewWillEnter(){
+    this.menu.enable(false);
+  }
+
+}

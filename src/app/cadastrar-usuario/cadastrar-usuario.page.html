@@ -1,0 +1,41 @@
+<ion-content padding>
+
+  <div id="divCadastro">
+    <ion-img id="imagemLogo" src="../../assets/img/cake-show.png"></ion-img>
+    <div id="divCadastro2">
+
+      <h2>Cadastro de Usuário</h2>
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <p id="msg"> {{msg}} </p>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-button [routerLink]="['/login']" routerLinkActive="router-link-active"  color="light" expand="full" fill="outline" shape="round">
+            CANCELAR
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button expand="full" shape="round">
+            Entrar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

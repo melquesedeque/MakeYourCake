@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'consultar-produtos', canActivate:[AutenticarGuardGuard] ,loadChildren: './consultar-produtos/consultar-produtos.module#ConsultarProdutosPageModule' },
   { path: 'listar-caracteristicas/:nomeBolo', canActivate:[AutenticarGuardGuard] ,loadChildren: './listar-caracteristicas/listar-caracteristicas.module#ListarCaracteristicasPageModule' },
+  { path: 'cadastrar-usuario', canActivate:[AutenticarGuardGuard], loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
+  { path: 'monte-seu-bolo', canActivate:[AutenticarGuardGuard], loadChildren: './monte-seu-bolo/monte-seu-bolo.module#MonteSeuBoloPageModule' },
 ];
 
 @NgModule({

@@ -1,0 +1,50 @@
+ion-content{
+    --margin: 0px;
+    --background:rgba(251, 6, 6, 0.94);
+}
+
+ion-toolbar{
+    --background:rgba(194, 6, 6, 0.94);
+}
+
+#imagemLogo{
+    max-width: 30%;
+    height: 85%;
+    position: fixed; 
+    top: 5px; 
+    left: 50%; 
+    margin-right: -50%; 
+    transform: translate(-50%, -0%) 
+}
+
+#titulo{
+    color: white;
+    text-align: center;
+}
+
+ion-card{
+    --background: rgb(243, 241, 237);
+}
+
+.escholerMassa{
+    background-color:  rgba(255, 255, 255, 0.3);
+    width: 100%;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+}
+
+.escholerMassa, .imgcard{
+    margin-top: 5px;
+    border: 10px;
+    width: 100%;
+}
+
+.escholerMassa, .titulo{
+    text-align: center;
+    margin: 0px;
+}
+
+.escholerMassa, .tituloImagem{
+    margin: 5px 0px 0px 0px;
+}

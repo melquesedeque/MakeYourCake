@@ -20,8 +20,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.msg = "";
     this.formulario = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['melque@gmail.com', [Validators.email, Validators.required]],
+      senha: ['123456', [Validators.required, Validators.minLength(6)]]
     });
   }
 
