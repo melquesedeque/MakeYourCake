@@ -12,7 +12,7 @@
 
     <h2 id="titulo">Monte seu Bolo</h2>
 
-  <div class="escholerMassa">
+  <div class="escolher">
     <h3 class="titulo">Tamanho do Bolo</h3>
     <ion-row>
         <ion-col size="3"> 
@@ -37,7 +37,7 @@
       </ion-row>
   </div>
 
-  <div class="escholerMassa">
+  <div class="escolher">
       <h3 class="titulo">Escolha a Massa</h3>
       <ion-row>
           <ion-col size="3"> 
@@ -62,7 +62,7 @@
         </ion-row>
     </div>
 
-    <div class="escholerMassa">
+    <div class="escolher">
         <h3 class="titulo">Escolha o Recheio</h3>
         <ion-row>
             <ion-col size="3"> 
@@ -87,7 +87,7 @@
           </ion-row>
       </div>
 
-      <div class="escholerMassa">
+      <div class="escolher">
           <h3 class="titulo">Escolha os Toppings</h3>
           <ion-row>
               <ion-col size="3"> 
@@ -112,5 +112,5 @@
             </ion-row>
         </div>
 
-        <ion-button color="light" expand="full" fill="outline" shape="round">Finalizar Pedido</ion-button>
+        <ion-button color="light" expand="full" fill="outline" shape="round" [routerLink]="['/finalizar-pedido-monte']">Finalizar Pedido</ion-button>
 </ion-content>

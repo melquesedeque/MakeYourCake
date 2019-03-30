@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,12 @@ export class LoginPage implements OnInit {
   verificarSenha = false;
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private rotas: Router) {
+  constructor(private formBuilder: FormBuilder, private rotas: Router,private menuBarra:MenuController) {
   }
+
+  ionViewWillEnter() {
+    //this.menuBarra.enable(false); //Desabilita
+}
 
   ngOnInit() {
     this.msg = "";

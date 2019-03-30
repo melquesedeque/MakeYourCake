@@ -4,12 +4,12 @@ import { AutenticarGuardGuard } from './VerificarURL/autenticar-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'consultar-produtos', canActivate:[AutenticarGuardGuard] ,loadChildren: './consultar-produtos/consultar-produtos.module#ConsultarProdutosPageModule' },
-  { path: 'listar-caracteristicas/:nomeBolo', canActivate:[AutenticarGuardGuard] ,loadChildren: './listar-caracteristicas/listar-caracteristicas.module#ListarCaracteristicasPageModule' },
+  { path: 'consultar-produtos', loadChildren: './consultar-produtos/consultar-produtos.module#ConsultarProdutosPageModule' },
+  { path: 'listar-caracteristicas/:nomeBolo', loadChildren: './listar-caracteristicas/listar-caracteristicas.module#ListarCaracteristicasPageModule' },
   { path: 'cadastrar-usuario', canActivate:[AutenticarGuardGuard], loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
-  { path: 'monte-seu-bolo', canActivate:[AutenticarGuardGuard], loadChildren: './monte-seu-bolo/monte-seu-bolo.module#MonteSeuBoloPageModule' },
+  { path: 'monte-seu-bolo', loadChildren: './monte-seu-bolo/monte-seu-bolo.module#MonteSeuBoloPageModule' },
+  { path: 'finalizar-pedido-monte', loadChildren: './finalizar-pedido-monte/finalizar-pedido-monte.module#FinalizarPedidoMontePageModule' },
 ];
 
 @NgModule({
