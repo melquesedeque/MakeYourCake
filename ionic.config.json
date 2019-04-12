@@ -1,5 +1,7 @@
 {
   "name": "monte_seu_bolo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
