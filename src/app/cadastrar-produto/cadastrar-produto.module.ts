@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CadastrarProdutoPage } from './cadastrar-produto.page';
 import { ServicesModule } from '../services/services.module';
+import { Camera } from '@ionic-native/camera/ngx';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     ServicesModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CadastrarProdutoPage]
+  declarations: [CadastrarProdutoPage],
+  providers:[Camera]
 })
 export class CadastrarProdutoPageModule {}

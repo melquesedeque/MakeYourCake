@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutosService } from '../services/produtos.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Router } from '@angular/router';
+import { getTestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -9,23 +11,24 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   styleUrls: ['./cadastrar-produto.page.scss'],
 })
 export class CadastrarProdutoPage implements OnInit {
-
+  listaProdutos:any = [];
   formulario:FormGroup;
   foto:string = "../../assets/img/foto.png";
-  constructor(private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera) { }
+  constructor(private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera,private rotas:Router) { }
 
   ngOnInit() {
     this.formulario = this.formbuilder.group({
       titulo:[null,[Validators.required]],
       descricao:[null,[Validators.required]],
-      valor:[null,[Validators.required]],
-      imagem:[null,[Validators.required]],
+      valor:[null,[Validators.required]]
     });
   }
 
   cadastrar(){
-    this.produtos.cadastrarProduto(this.formulario.value).then(() =>{
-      alert("sucesso");
+    let valores = this.formulario.value;
+    valores.imagem = this.foto;
+    this.produtos.cadastrarProduto(valores).then(() =>{
+      this.rotas.navigateByUrl('/consultar-produtos');
     }).catch((erro) => alert(erro));
   }
 
@@ -35,7 +38,7 @@ export class CadastrarProdutoPage implements OnInit {
       allowEdit: true,
       quality: 100,
       saveToPhotoAlbum: false,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.CAMERA
