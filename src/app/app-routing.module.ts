@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'cadastrar-usuario', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
   { path: 'monte-seu-bolo', loadChildren: './monte-seu-bolo/monte-seu-bolo.module#MonteSeuBoloPageModule' },
   { path: 'finalizar-pedido-monte', loadChildren: './finalizar-pedido-monte/finalizar-pedido-monte.module#FinalizarPedidoMontePageModule' },
+  { path: 'cadastrar-produto', loadChildren: './cadastrar-produto/cadastrar-produto.module#CadastrarProdutoPageModule' },
 ];
 
 @NgModule({

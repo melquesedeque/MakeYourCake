@@ -33,7 +33,7 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button (click)="validarLogin()" expand="full" shape="round">
+          <ion-button (click)="validarLogin()" expand="full" shape="round" [disabled]="!formulario.valid">
             LOGAR
           </ion-button>
         </ion-col>
