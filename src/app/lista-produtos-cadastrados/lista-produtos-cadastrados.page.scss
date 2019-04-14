@@ -1,41 +1,26 @@
 ion-content{
     --background: linear-gradient(to bottom, rgb(250, 11, 11), rgb(51, 19, 8));
+    --margin:0px;
 }
 
 ion-toolbar{
     --background:rgba(194, 6, 6, 0.94);
 }
 
-#btnVoltar{
-    color:white;
-}
-
 #imagemLogo{
-    max-width: 30%; 
-    position: fixed;
+    max-width: 30%;
     height: 85%;
+    position: fixed; 
     top: 5px; 
     left: 50%; 
     margin-right: -50%; 
     transform: translate(-50%, -0%) 
 }
 
-ion-card{
-    --background: rgb(243, 241, 237);
-}
-
-.imgcard{
-    border: 10px;
-    width: 100%;
-    height: 100%;
-}
-
 h1{
-    text-align: center;
+    text-align: center !important; 
+    font-size: 30px;
+    font-style: unset;
+    margin-top: 10%;
     color: white;
-}
-
-h4{
-    text-align: center;
-    font-weight: bold;
 }

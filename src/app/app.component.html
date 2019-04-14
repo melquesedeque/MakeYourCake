@@ -2,25 +2,26 @@
   <ion-menu menuId="MenuMonte" side="start" type="overlay">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title>Menu do MAKE YOUR CAKE</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-menu-toggle>
         <ion-list>
-          <ion-item [routerLink]="['/consultar-produtos']">
-            <ion-icon slot="start" name="search"></ion-icon> Consultar Produtos
-          </ion-item>
-          <ion-item [routerLink]="['/monte-seu-bolo']"> 
-              <ion-icon slot="start" name="send"></ion-icon> Monte Seu Bolo
-          </ion-item>
-          
-          <ion-item [routerLink]="['/cadastrar-produto']"> 
+          <ion-item [routerLink]="['/cadastrar-produto']">
             <ion-icon slot="start" name="send"></ion-icon> Cadastrar Produto
           </ion-item>
-          
-          <ion-item [routerLink]="['/login']"> 
+          <ion-item [routerLink]="['/consultar-produtos']">
+            <ion-icon slot="start" name="search"></ion-icon> Catálogo dos Produtos
+          </ion-item>
+          <ion-item [routerLink]="['/lista-produtos-cadastrados']">
+            <ion-icon slot="start" name="send"></ion-icon> Lista dos Produtos
+          </ion-item>
+          <ion-item [routerLink]="['/monte-seu-bolo']">
+            <ion-icon slot="start" name="send"></ion-icon> Monte Seu Bolo
+          </ion-item>
+          <ion-item [routerLink]="['/login']">
             <ion-icon slot="start" name="exit"></ion-icon> Sair
           </ion-item>
         </ion-list>

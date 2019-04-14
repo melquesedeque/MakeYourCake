@@ -17,15 +17,12 @@ export class ListarCaracteristicasPage implements OnInit {
   valor;
   produtoObjeto = [];
 
-  constructor(private pegarNomeBolo:ActivatedRoute,private produtos:ProdutosService) { }
+  constructor(private pegarIdBolo:ActivatedRoute,private produtos:ProdutosService) { }
 
   ngOnInit() {
-    this.id = this.pegarNomeBolo.snapshot.params['nomeBolo'];
-    alert(this.id);
-
+    this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
       this.produtoObjeto = resultado;
-      alert(this.produtoObjeto);
     });
   }
 

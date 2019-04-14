@@ -41,4 +41,26 @@ export class ProdutosService extends BancoService{
       })
     });
   }
+
+  public editarProdutos(obj: Object, id:any) {
+
+    let key = Object.keys(obj);
+    let values = Object.values(obj);
+    let campos:string[] = [];
+    key.forEach((k, i) => {
+      campos.push(k + ' = ?');
+    }) 
+    values.push(id);
+    
+    this.getDB().then((db:SQLiteObject) => {
+      db.executeSql("UPDATE produtos" + " SET " + campos.join(', ') + " WHERE id = ?", values);
+      return true;
+    });
+  }
+
+  public deletarProduto(id:any) {
+    this.getDB().then((db:SQLiteObject) => {
+      db.executeSql("DELETE FROM produtos WHERE id = ?", [id]);
+    });
+  }
 }
