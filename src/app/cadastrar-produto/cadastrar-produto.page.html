@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="MenuMonte"></ion-menu-button>
+      <ion-menu-button id="menu" menu="MenuMonte"></ion-menu-button>
     </ion-buttons>
 
     <ion-img id="imagemLogo" src="../../assets/img/cake-show.png"></ion-img>
@@ -17,15 +17,15 @@
       <form [formGroup]="formulario">
         <ion-list>
           <ion-item>
-            <ion-label position="floating">Titulo</ion-label>
+            <ion-label class="label" position="floating">Titulo</ion-label>
             <ion-input type="text" formControlName="titulo"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Descrição</ion-label>
+            <ion-label class="label" position="floating">Descrição</ion-label>
             <ion-textarea formControlName="descricao"></ion-textarea>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Valor</ion-label>
+            <ion-label class="label" position="floating">Valor</ion-label>
             <ion-input type="text" formControlName="valor"></ion-input>
           </ion-item>
           <div id="fotoDiv" (click)="tiraFoto()">
@@ -44,7 +44,7 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button expand="full" shape="round" [disabled]="!formulario.valid" (click)="cadastrar()">
+          <ion-button expand="full" shape="round" [disabled]="!formulario.valid" (click)="SalvarProduto()">
             Cadastrar
           </ion-button>
         </ion-col>

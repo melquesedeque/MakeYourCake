@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AutenticarGuardGuard implements CanActivate {
 
   public static podeAcessar = false;
+  public static idUsuarioLogado = '00';
 
   constructor(private rotas:Router){}
 

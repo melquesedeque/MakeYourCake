@@ -20,4 +20,32 @@ export class UsuarioService extends BancoService {
       return db.executeSql("INSERT INTO usuarios (nome, email, senha) VALUES (?,?,?)", [user.nome,user.email,user.senha]);
     });
   }
+
+  public buscarTodosUsuarios(): Promise<any> {
+    return this.getDB().then((db:SQLiteObject) => {
+      return db.executeSql("SELECT * FROM usuarios", []).then(resultado => {
+        let retornar = [];
+        if (resultado.rows.length > 0) {
+          for(let i = 0; i < resultado.rows.length; i++) {
+            retornar.push(resultado.rows.item(i));
+          }
+        }
+        return retornar;
+      })
+    });
+  }
+
+  public BuacarUsuarioPorId(id): Promise<any> {
+    return this.getDB().then((db:SQLiteObject) => {
+      return db.executeSql("SELECT * FROM usuarios WHERE id = ?", [id]).then(resultado => {
+        let retornar = [];
+        if (resultado.rows.length > 0) {
+          for(let i = 0; i < resultado.rows.length; i++) {
+            retornar.push(resultado.rows.item(i));
+          }
+        }
+        return retornar;
+      })
+    });
+  }
 }

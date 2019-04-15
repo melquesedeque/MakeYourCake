@@ -12,6 +12,7 @@ import { async } from 'q';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  id;
   msg;
   verificarEMail = false;
   verificarSenha = false;
@@ -27,7 +28,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.msg = "";
     this.formulario = this.formBuilder.group({
-      email: ['melque@melque.com', [Validators.email, Validators.required]],
+      email: ['ze@gmail.com', [Validators.email, Validators.required]],
       senha: ['123456', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -36,8 +37,16 @@ export class LoginPage implements OnInit {
    
       let logou = await this.user.logar(this.formulario.get('email').value, this.formulario.get('senha').value);
       if (logou) {
-        this.rotas.navigateByUrl("/consultar-produtos");
-         AutenticarGuardGuard.podeAcessar = true;
+        this.user.buscarTodosUsuarios().then(resultados =>{
+          resultados.forEach(usuario => {
+            if(usuario.email == this.formulario.get('email').value && usuario.senha == this.formulario.get('senha').value){
+              this.id = usuario.id;
+            }
+          });
+        });
+        this.rotas.navigate(['/consultar-produtos',this.id]);
+        AutenticarGuardGuard.podeAcessar = true;
+        AutenticarGuardGuard.idUsuarioLogado = this.id;
       }else{
         this.msg="E-mail ou senha Incorreto";
       }

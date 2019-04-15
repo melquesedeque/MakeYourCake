@@ -12,6 +12,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class CadastrarUsuarioPage implements OnInit {
 
+  id;
   formulario:FormGroup;
 
   constructor(private formBilder:FormBuilder,private user:UsuarioService, private rotas:Router,private menuBarra:MenuController) { }
@@ -29,12 +30,21 @@ export class CadastrarUsuarioPage implements OnInit {
   }
 
   cadastrar(){
-    this.user.insert(this.formulario.value).then(() => {
-      this.rotas.navigateByUrl("/consultar-produtos");
-      AutenticarGuardGuard.podeAcessar = true;
-    }).catch(() => {
+    this.user.insert(this.formulario.value).then(() => {}).catch(() => {
       alert('Erro ao Cadastrar Usuário');
-    })
+    });
+
+    this.user.buscarTodosUsuarios().then(resultados =>{
+      resultados.forEach(usuario => {
+        if(usuario.email == this.formulario.get('email').value && usuario.senha == this.formulario.get('senha').value){
+          this.id = usuario.id;
+        }
+      });
+    });
+
+    this.rotas.navigate(['/consultar-produtos',this.id]);
+    AutenticarGuardGuard.podeAcessar = true;
+    AutenticarGuardGuard.idUsuarioLogado = this.id;
   }
 
 }

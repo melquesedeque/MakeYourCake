@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutosService } from '../services/produtos.service';
 import { Produto } from '../models/produto';
-import { Camera } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -15,7 +15,7 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   id;
   foto;
   listaProdutos: Produto;
-  constructor(private msgAlerta:AlertController ,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produto:ProdutosService, private camera:Camera) { }
+  constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produto:ProdutosService, private camera:Camera) { }
 
   ngOnInit() {
     this.id = this.pegarIdBolo.snapshot.params['id'];

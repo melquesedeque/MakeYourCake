@@ -4,6 +4,8 @@ import { ProdutosService } from '../services/produtos.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Router } from '@angular/router';
 import { getTestBed } from '@angular/core/testing';
+import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -14,7 +16,7 @@ export class CadastrarProdutoPage implements OnInit {
   listaProdutos:any = [];
   formulario:FormGroup;
   foto:string = "../../assets/img/foto.png";
-  constructor(private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera,private rotas:Router) { }
+  constructor(private msgAlerta:AlertController, private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera,private rotas:Router) { }
 
   ngOnInit() {
     this.formulario = this.formbuilder.group({
@@ -28,7 +30,7 @@ export class CadastrarProdutoPage implements OnInit {
     let valores = this.formulario.value;
     valores.imagem = this.foto;
     this.produtos.cadastrarProduto(valores).then(() =>{
-      this.rotas.navigateByUrl('/consultar-produtos');
+      this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
     }).catch((erro) => alert(erro));
   }
 
@@ -52,4 +54,15 @@ export class CadastrarProdutoPage implements OnInit {
     });
   }
 
+  async SalvarProduto() {
+    const alert = await this.msgAlerta.create({
+      header: 'Atenção!',
+      message: 'Você Realmente Deseja Cadastrar este Produto?',
+      buttons: [{text:'Cancelar'},{text:'Cadastrar', handler: () =>{
+        this.cadastrar();
+      } }]
+    });
+  
+    await alert.present();
+  }
 }

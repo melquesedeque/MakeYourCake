@@ -10,9 +10,7 @@ ion-content{
 }
 
 #divCadastro2{
-    border-radius: 15px;
     width: 100vh;
-    padding: 10px
 }
 
 h2{
@@ -25,7 +23,7 @@ h2{
 
 ion-list {
     --ion-item-background: rgba(66, 29, 29, 0);
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 ion-item {
@@ -51,5 +49,14 @@ ion-item {
     font-size: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
+    text-transform: uppercase;
+}
+
+.label{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#inputNome{
     text-transform: uppercase;
 }
