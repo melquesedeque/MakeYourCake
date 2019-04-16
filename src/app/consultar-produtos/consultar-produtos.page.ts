@@ -19,9 +19,6 @@ export class ConsultarProdutosPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuBarra.enable(true); //Desabilita
-  }
-
-  ngOnInit() {
     this.id = this.idUsuario.snapshot.params['id'];
     this.produtos.getAll().then(resultado => {
       this.listaProdutos = resultado;
@@ -37,5 +34,7 @@ export class ConsultarProdutosPage implements OnInit {
       });
     }
   }
+
+  ngOnInit() { }
   
 }

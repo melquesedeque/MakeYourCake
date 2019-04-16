@@ -11,10 +11,12 @@ export class ListaProdutosCadastradosPage implements OnInit {
   listaProdutos:any = [];
   constructor(private produto:ProdutosService) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
     this.produto.getAll().then(resultado => {
       this.listaProdutos = resultado;
     });
   }
+
+  ngOnInit() { }
 
 }

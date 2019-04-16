@@ -19,11 +19,13 @@ export class ListarCaracteristicasPage implements OnInit {
 
   constructor(private pegarIdBolo:ActivatedRoute,private produtos:ProdutosService) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
       this.produtoObjeto = resultado;
     });
   }
+
+  ngOnInit() { }
 
 }
