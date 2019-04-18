@@ -22,10 +22,10 @@ export class LoginPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.menuBarra.enable(false); //Desabilita
+    this.menuBarra.enable(false); //Desabilit
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.msg = "";
     this.formulario = this.formBuilder.group({
       email: ['ze@gmail.com', [Validators.email, Validators.required]],

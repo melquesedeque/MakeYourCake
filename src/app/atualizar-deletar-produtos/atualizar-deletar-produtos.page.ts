@@ -17,7 +17,7 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   listaProdutos: Produto;
   constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produto:ProdutosService, private camera:Camera) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produto.BuacarProdutoPorId(this.id).then(resultado => {
       resultado.forEach(element => {
@@ -26,6 +26,7 @@ export class AtualizarDeletarProdutosPage implements OnInit {
       });
     });
   }
+  ngOnInit() { }
 
   editar(){
    try {
