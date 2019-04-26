@@ -15,7 +15,7 @@ import { AlertController } from '@ionic/angular';
 export class CadastrarProdutoPage implements OnInit {
   listaProdutos:any = [];
   formulario:FormGroup;
-  foto:string = "../../assets/img/foto.png";
+  foto:string = "../../assets/img/foto-1.png";
   constructor(private msgAlerta:AlertController, private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera,private rotas:Router) { }
 
   ngOnInit() {
