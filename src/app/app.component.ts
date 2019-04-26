@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   idUsuarioLogado;
+  public static logar:boolean = false;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -20,6 +22,10 @@ export class AppComponent {
     private rotas:Router
   ) {
     this.initializeApp();
+  }
+
+  ionViewWillEnter(){
+    alert("Olha");
   }
 
   onClick(){

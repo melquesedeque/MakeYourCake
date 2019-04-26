@@ -37,13 +37,13 @@ export class CadastrarProdutoPage implements OnInit {
   tiraFoto(){
     const options: CameraOptions = {
       cameraDirection: this.camera.Direction.BACK,
-      allowEdit: true,
+      allowEdit: false,
       quality: 100,
       saveToPhotoAlbum: false,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.CAMERA
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
     
     this.camera.getPicture(options).then((imageData) => {

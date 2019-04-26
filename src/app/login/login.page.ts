@@ -5,6 +5,7 @@ import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 import { MenuController } from '@ionic/angular';
 import { UsuarioService } from '../services/usuario.service';
 import { async } from 'q';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +15,22 @@ import { async } from 'q';
 export class LoginPage implements OnInit {
   id;
   msg;
+  listaUsuario;
   verificarEMail = false;
   verificarSenha = false;
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private rotas: Router,private menuBarra:MenuController,private user:UsuarioService) {
+  constructor(private formBuilder: FormBuilder, private rotas: Router, private menuBarra: MenuController, private user: UsuarioService) {
   }
 
   ionViewWillEnter() {
     this.menuBarra.enable(false); //Desabilit
+    this.user.buscarTodosUsuarios().then(resultados => {
+      this.listaUsuario = resultados;
+    });
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.msg = "";
     this.formulario = this.formBuilder.group({
       email: ['ze@gmail.com', [Validators.email, Validators.required]],
@@ -34,21 +39,20 @@ export class LoginPage implements OnInit {
   }
 
   async validarLogin() {
-   
-      let logou = await this.user.logar(this.formulario.get('email').value, this.formulario.get('senha').value);
-      if (logou) {
-        this.user.buscarTodosUsuarios().then(resultados =>{
-          resultados.forEach(usuario => {
-            if(usuario.email == this.formulario.get('email').value && usuario.senha == this.formulario.get('senha').value){
-              this.id = usuario.id;
-            }
-          });
-        });
-        this.rotas.navigate(['/consultar-produtos',this.id]);
-        AutenticarGuardGuard.podeAcessar = true;
-        AutenticarGuardGuard.idUsuarioLogado = this.id;
-      }else{
-        this.msg="E-mail ou senha Incorreto";
-      }
+
+    let logou = await this.user.logar(this.formulario.get('email').value, this.formulario.get('senha').value);
+    if (logou) {
+      this.listaUsuario.forEach(usuario => {
+        if (usuario.email == this.formulario.get('email').value && usuario.senha == this.formulario.get('senha').value) {
+          this.id = usuario.id;
+        }
+      });
+      this.rotas.navigate(['/consultar-produtos', this.id]);
+      AppComponent.logar = true;
+      AutenticarGuardGuard.podeAcessar = true;
+      AutenticarGuardGuard.idUsuarioLogado = this.id;
+    } else {
+      this.msg = "E-mail ou senha Incorreto";
+    }
   }
 }

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ListarCaracteristicasPage } from './listar-caracteristicas.page';
 import { ServicesModule } from '../services/services.module';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     ServicesModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListarCaracteristicasPage]
+  declarations: [ListarCaracteristicasPage],
+  providers:[Vibration]
 })
 export class ListarCaracteristicasPageModule {}

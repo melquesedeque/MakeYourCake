@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { FinalizarPedidoMontePage } from './finalizar-pedido-monte.page';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FinalizarPedidoMontePage]
+  declarations: [FinalizarPedidoMontePage],
+  providers:[Vibration]
 })
 export class FinalizarPedidoMontePageModule {}
