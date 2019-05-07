@@ -6,6 +6,7 @@ import { MenuController } from '@ionic/angular';
 import { UsuarioService } from '../services/usuario.service';
 import { async } from 'q';
 import { AppComponent } from '../app.component';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  async validarLogin() {
+  /* async validarLogin() {
 
     let logou = await this.user.logar(this.formulario.get('email').value, this.formulario.get('senha').value);
     if (logou) {
@@ -54,5 +55,16 @@ export class LoginPage implements OnInit {
     } else {
       this.msg = "E-mail ou senha Incorreto";
     }
+  } */
+  async validarLogin(){
+    firebase.auth().signInWithEmailAndPassword(this.formulario.get('email').value,this.formulario.get('senha').value).then(usuarioLogado =>{
+      if(usuarioLogado != null){
+        AutenticarGuardGuard.podeAcessar = true;
+        this.rotas.navigateByUrl('/consultar-produtos');
+      }
+    }).catch(erro =>{
+      this.msg = "E-mail ou Senha Invalidos!";
+    });
   }
+
 }

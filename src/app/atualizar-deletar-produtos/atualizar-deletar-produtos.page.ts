@@ -19,16 +19,16 @@ export class AtualizarDeletarProdutosPage implements OnInit {
 
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
-    this.produto.BuacarProdutoPorId(this.id).then(resultado => {
+    /* this.produto.BuacarProdutoPorId(this.id).then(resultado => {
       resultado.forEach(element => {
         this.listaProdutos = element;
         this.foto = this.listaProdutos.imagem;
       });
-    });
+    }); */
   }
   ngOnInit() { }
 
-  editar(){
+  /* editar(){
    try {
     this.listaProdutos.imagem = this.foto;
     this.produto.editarProdutos(this.listaProdutos, this.id);
@@ -93,5 +93,5 @@ export class AtualizarDeletarProdutosPage implements OnInit {
     });
   
     await alert.present();
-  }
+  } */
 }

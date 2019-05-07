@@ -24,12 +24,12 @@ export class ListarCaracteristicasPage implements OnInit {
 
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
-    this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
+    /* this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
       this.produtoObjeto = resultado;
-    });
+    }); */
   }
 
-  comprar(){
+  /* comprar(){
     this.mensagemToast();
     this.vibracao.vibrate(1000);
     this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
@@ -42,7 +42,7 @@ export class ListarCaracteristicasPage implements OnInit {
       position: "bottom"
     });
     toast.present();
-  }
+  } */
 
   ngOnInit() { }
 

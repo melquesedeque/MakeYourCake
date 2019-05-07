@@ -26,7 +26,7 @@ export class CadastrarProdutoPage implements OnInit {
     });
   }
 
-  cadastrar(){
+  /* cadastrar(){
     let valores = this.formulario.value;
     valores.imagem = this.foto;
     this.produtos.cadastrarProduto(valores).then(() =>{
@@ -64,5 +64,5 @@ export class CadastrarProdutoPage implements OnInit {
     });
   
     await alert.present();
-  }
+  } */
 }

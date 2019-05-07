@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AutenticarGuardGuard } from './VerificarURL/autenticar-guard.guard';
 import { Router } from '@angular/router';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   idUsuarioLogado;
-  public static logar:boolean = false;
+  nomeUsuario;
 
   constructor(
     private platform: Platform,
@@ -25,14 +26,23 @@ export class AppComponent {
   }
 
   ionViewWillEnter(){
-    alert("Olha");
-  }
-
-  onClick(){
-    this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
+    this.nomeUsuario = firebase.auth().currentUser.displayName;
   }
 
   initializeApp() {
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyB-mdqHAC7ZElAz8mT15LeasRlNWaCP3Xk",
+      authDomain: "makeyourcake-fb179.firebaseapp.com",
+      databaseURL: "https://makeyourcake-fb179.firebaseio.com",
+      projectId: "makeyourcake-fb179",
+      storageBucket: "makeyourcake-fb179.appspot.com",
+      messagingSenderId: "76958762949",
+      appId: "1:76958762949:web:e1f8fcbee9cb6df1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -40,6 +50,7 @@ export class AppComponent {
   }
 
   deslogar(){
+    firebase.auth().signOut();
     AutenticarGuardGuard.podeAcessar = false;
     AutenticarGuardGuard.idUsuarioLogado = '00';
   }

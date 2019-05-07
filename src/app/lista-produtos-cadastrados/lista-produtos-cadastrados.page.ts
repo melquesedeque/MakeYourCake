@@ -12,9 +12,9 @@ export class ListaProdutosCadastradosPage implements OnInit {
   constructor(private produto:ProdutosService) { }
 
   ionViewWillEnter(){
-    this.produto.getAll().then(resultado => {
+    /* this.produto.getAll().then(resultado => {
       this.listaProdutos = resultado;
-    });
+    }); */
   }
 
   ngOnInit() { }

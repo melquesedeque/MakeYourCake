@@ -4,6 +4,7 @@ import { UsuarioService } from '../services/usuario.service';
 import { Router } from '@angular/router';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 import { MenuController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -13,23 +14,23 @@ import { MenuController } from '@ionic/angular';
 export class CadastrarUsuarioPage implements OnInit {
 
   id;
-  formulario:FormGroup;
+  formulario: FormGroup;
 
-  constructor(private formBilder:FormBuilder,private user:UsuarioService, private rotas:Router,private menuBarra:MenuController) { }
+  constructor(private formBilder: FormBuilder, private user: UsuarioService, private rotas: Router, private menuBarra: MenuController) { }
 
   ngOnInit() {
-   this.formulario = this.formBilder.group({
-      nome:[null,[Validators.required]],
-      email:[null,[Validators.required, Validators.email]],
-      senha:[null,[Validators.required, Validators.minLength(6)]]
-   });
+    this.formulario = this.formBilder.group({
+      nome: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      senha: [null, [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   ionViewWillEnter() {
     this.menuBarra.enable(false); //Desabilita
   }
 
-  cadastrar(){
+  /* cadastrar(){
     this.user.insert(this.formulario.value).then(() => {}).catch(() => {
       alert('Erro ao Cadastrar Usuário');
     });
@@ -45,6 +46,23 @@ export class CadastrarUsuarioPage implements OnInit {
     this.rotas.navigate(['/consultar-produtos',this.id]);
     AutenticarGuardGuard.podeAcessar = true;
     AutenticarGuardGuard.idUsuarioLogado = this.id;
+  } */
+
+  cadastrar() {
+
+    firebase.auth().createUserWithEmailAndPassword(this.formulario.get('email').value, this.formulario.get('senha').value).then(usuarioLogado => {
+      if (usuarioLogado != null) {
+        AutenticarGuardGuard.podeAcessar = true;
+
+        var user = firebase.auth().currentUser;
+        user.updateProfile({
+          displayName: this.formulario.get('nome').value,
+        }).then(certo => 
+          this.rotas.navigateByUrl('/consultar-produtos'));
+      }
+    }).catch(erro => {
+      alert("Erro!");
+    })
   }
 
 }

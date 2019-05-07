@@ -3,13 +3,19 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>MENU MAKE YOUR CAKE</ion-title>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="../../assets/img/foto-1.png" />
+          </ion-avatar>
+          <ion-label>Nome do Usuario</ion-label>
+        </ion-item>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-menu-toggle>
         <ion-list>
-          <ion-item (click)="onClick()">
+          <ion-item [routerLink]="['/consultar-produtos']" routerLinkActive="router-link-active" >
             <ion-icon slot="start" name="search"></ion-icon> Catálogo dos Produtos
           </ion-item>
           <ion-item [routerLink]="['/monte-seu-bolo']">

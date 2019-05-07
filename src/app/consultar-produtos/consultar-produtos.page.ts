@@ -4,6 +4,7 @@ import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 import { MenuController } from '@ionic/angular';
 import { ProdutosService } from '../services/produtos.service';
 import { UsuarioService } from '../services/usuario.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-consultar-produtos',
@@ -19,8 +20,8 @@ export class ConsultarProdutosPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuBarra.enable(true); //Desabilita
-    this.id = this.idUsuario.snapshot.params['id'];
-    this.produtos.getAll().then(resultado => {
+    this.nomeUsuario = firebase.auth().currentUser.displayName;
+    /* this.produtos.getAll().then(resultado => {
       this.listaProdutos = resultado;
     }).catch((erro) => alert(erro));
 
@@ -32,7 +33,7 @@ export class ConsultarProdutosPage implements OnInit {
         this.nomeUsuario = usuario.nome;
         });
       });
-    }
+    } */
   }
 
   ngOnInit() { }
