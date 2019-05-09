@@ -25,10 +25,6 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  ionViewWillEnter(){
-    this.nomeUsuario = firebase.auth().currentUser.displayName;
-  }
-
   initializeApp() {
 
     var firebaseConfig = {
@@ -42,6 +38,8 @@ export class AppComponent {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    
+    firebase.auth().onAuthStateChanged(usuario => this.nomeUsuario = usuario.displayName);
 
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

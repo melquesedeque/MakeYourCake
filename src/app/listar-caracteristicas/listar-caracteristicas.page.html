@@ -13,16 +13,16 @@
 
   <h1>Finalizar Pedido</h1>
 
-  <ion-card *ngFor="let item of produtoObjeto">
+  <ion-card>
     <ion-card-header>
-      <ion-img class="imgcard" src="{{item.imagem}}"></ion-img>
+      <ion-img class="imgcard" src="{{produtoObjeto.imagem}}"></ion-img>
     </ion-card-header>
     <ion-card-content>
-      <ion-card-title>{{item.titulo}}</ion-card-title>
-      {{item.descricao}}
+      <ion-card-title>{{produtoObjeto.titulo}}</ion-card-title>
+      {{produtoObjeto.descricao}}
     </ion-card-content>
 
-    <h4>{{item.valor}}</h4>
+    <h4>{{produtoObjeto.valor}}</h4>
 
     <ion-button expand="full" fill="outline" shape="round" (click)="comprar()"> Comprar! </ion-button>
   </ion-card>

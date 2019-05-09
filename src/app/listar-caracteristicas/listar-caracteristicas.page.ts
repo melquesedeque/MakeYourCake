@@ -4,6 +4,7 @@ import { ProdutosService } from '../services/produtos.service';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 import { ToastController } from '@ionic/angular';
+import { Produto } from '../models/produto';
 
 @Component({
   selector: 'app-listar-caracteristicas',
@@ -18,21 +19,26 @@ export class ListarCaracteristicasPage implements OnInit {
   titulo;
   descricao;
   valor;
-  produtoObjeto = [];
+  produtoObjeto: Produto;
 
-  constructor(private pegarIdBolo:ActivatedRoute, private toast:ToastController, private produtos:ProdutosService, private rotas:Router, private vibracao:Vibration) { }
+  constructor(private pegarIdBolo:ActivatedRoute, private toast:ToastController, private produtoService:ProdutosService, private rotas:Router, private vibracao:Vibration) { }
 
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
+    this.produtoService.buscar(this.id).then(resultado => {
+      console.log("Aqui!"+resultado.titulo);
+      this.produtoObjeto = resultado;
+    });
+    
     /* this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
       this.produtoObjeto = resultado;
     }); */
   }
 
-  /* comprar(){
+  comprar(){
     this.mensagemToast();
     this.vibracao.vibrate(1000);
-    this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
+    this.rotas.navigateByUrl('/consultar-produtos');
   }
 
   async mensagemToast() {
@@ -42,7 +48,7 @@ export class ListarCaracteristicasPage implements OnInit {
       position: "bottom"
     });
     toast.present();
-  } */
+  }
 
   ngOnInit() { }
 

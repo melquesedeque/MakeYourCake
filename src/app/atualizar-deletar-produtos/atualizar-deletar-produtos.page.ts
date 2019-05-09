@@ -15,10 +15,14 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   id;
   foto;
   listaProdutos: Produto;
-  constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produto:ProdutosService, private camera:Camera) { }
+  constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produtosService:ProdutosService, private camera:Camera) { }
 
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
+    this.produtosService.buscar(this.id).then(resultado => {
+        this.listaProdutos = resultado;
+        this.foto = this.listaProdutos.imagem;
+    });
     /* this.produto.BuacarProdutoPorId(this.id).then(resultado => {
       resultado.forEach(element => {
         this.listaProdutos = element;

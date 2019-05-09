@@ -26,9 +26,6 @@ export class LoginPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuBarra.enable(false); //Desabilit
-    this.user.buscarTodosUsuarios().then(resultados => {
-      this.listaUsuario = resultados;
-    });
   }
 
   ngOnInit() {

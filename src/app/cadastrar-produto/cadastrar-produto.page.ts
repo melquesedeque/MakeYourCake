@@ -16,7 +16,7 @@ export class CadastrarProdutoPage implements OnInit {
   listaProdutos:any = [];
   formulario:FormGroup;
   foto:string = "../../assets/img/foto-1.png";
-  constructor(private msgAlerta:AlertController, private formbuilder:FormBuilder, private produtos:ProdutosService,private camera:Camera,private rotas:Router) { }
+  constructor(private msgAlerta:AlertController, private formbuilder:FormBuilder, private produtosService:ProdutosService,private camera:Camera,private rotas:Router) { }
 
   ngOnInit() {
     this.formulario = this.formbuilder.group({
@@ -26,12 +26,11 @@ export class CadastrarProdutoPage implements OnInit {
     });
   }
 
-  /* cadastrar(){
+  cadastrar(){
     let valores = this.formulario.value;
     valores.imagem = this.foto;
-    this.produtos.cadastrarProduto(valores).then(() =>{
-      this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
-    }).catch((erro) => alert(erro));
+    this.produtosService.cadastrar(valores);
+    this.rotas.navigateByUrl('/consultar-produtos');
   }
 
   tiraFoto(){
@@ -64,5 +63,14 @@ export class CadastrarProdutoPage implements OnInit {
     });
   
     await alert.present();
+  }
+
+
+  /* cadastrar(){
+    let valores = this.formulario.value;
+    valores.imagem = this.foto;
+    this.produtos.cadastrarProduto(valores).then(() =>{
+      this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
+    }).catch((erro) => alert(erro));
   } */
 }

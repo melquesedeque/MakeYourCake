@@ -16,11 +16,16 @@ export class ConsultarProdutosPage implements OnInit {
   id;
   nomeUsuario;
   listaProdutos:any = [];
-  constructor(private menuBarra:MenuController, private produtos:ProdutosService, private idUsuario:ActivatedRoute,private user:UsuarioService) { }
+  constructor(private menuBarra:MenuController, private produtosService:ProdutosService, private idUsuario:ActivatedRoute,private user:UsuarioService) { }
 
   ionViewWillEnter() {
     this.menuBarra.enable(true); //Desabilita
-    this.nomeUsuario = firebase.auth().currentUser.displayName;
+    //this.nomeUsuario = firebase.auth().currentUser.displayName;
+
+    this.produtosService.buscarTodos().then(resultados =>{
+      this.listaProdutos = resultados;
+    });
+
     /* this.produtos.getAll().then(resultado => {
       this.listaProdutos = resultado;
     }).catch((erro) => alert(erro));

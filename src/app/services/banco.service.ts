@@ -6,7 +6,7 @@ import { Platform } from '@ionic/angular';
   providedIn: 'root'
 })
 export class BancoService {
-
+/* 
   constructor(private sqlite: SQLite, platform: Platform) { 
     platform.ready().then(() => this.createDB());
   }
@@ -37,5 +37,5 @@ export class BancoService {
         imagem TEXT\
         )", []);
     });
-  }
+  } */
 }

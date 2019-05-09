@@ -9,9 +9,12 @@ import { ProdutosService } from '../services/produtos.service';
 export class ListaProdutosCadastradosPage implements OnInit {
 
   listaProdutos:any = [];
-  constructor(private produto:ProdutosService) { }
+  constructor(private produtoService:ProdutosService) { }
 
   ionViewWillEnter(){
+    this.produtoService.buscarTodos().then(resultados => {
+      this.listaProdutos = resultados;
+    });
     /* this.produto.getAll().then(resultado => {
       this.listaProdutos = resultado;
     }); */

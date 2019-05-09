@@ -7,7 +7,7 @@ import { BancoService } from './banco.service';
 })
 export class UsuarioService extends BancoService {
 
-  public logar(email: string, senha:string): Promise<any> {
+  /* public logar(email: string, senha:string): Promise<any> {
     return this.getDB().then((db:SQLiteObject) => {
       return db.executeSql("SELECT email FROM usuarios WHERE email = ? AND senha = ?", [email, senha]).then(resultado => {
         return (resultado.rows.length > 0);
@@ -47,5 +47,5 @@ export class UsuarioService extends BancoService {
         return retornar;
       })
     });
-  }
+  } */
 }
