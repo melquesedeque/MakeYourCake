@@ -15,7 +15,10 @@
     <ion-content>
       <ion-menu-toggle>
         <ion-list>
-          <ion-item [routerLink]="['/consultar-produtos']" routerLinkActive="router-link-active" >
+          <ion-item [routerLink]="['/login']" *ngIf="!usuarioLogado">
+            <ion-icon slot="start" name="exit"></ion-icon> Logar
+          </ion-item>
+          <ion-item [routerLink]="['/consultar-produtos']" routerLinkActive="router-link-active">
             <ion-icon slot="start" name="search"></ion-icon> Catálogo dos Produtos
           </ion-item>
           <ion-item [routerLink]="['/monte-seu-bolo']">
@@ -30,7 +33,7 @@
           <ion-item [routerLink]="['/lista-produtos-cadastrados']">
             <ion-icon slot="start" name="list"></ion-icon> Lista dos Produtos
           </ion-item>
-          <ion-item [routerLink]="['/login']" (click)="deslogar()">
+          <ion-item (click)="deslogar()" *ngIf="usuarioLogado">
             <ion-icon slot="start" name="exit"></ion-icon> Sair
           </ion-item>
         </ion-list>

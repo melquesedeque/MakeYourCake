@@ -16,22 +16,22 @@
     <h3 class="titulo">Tamanho do Bolo</h3>
     <ion-row>
       <ion-col size="3">
-        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem01"></ion-img>
+        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem01" (click)="tiraFoto('T01')"></ion-img>
         <input type="text" class="imgcard" [(ngModel)]="monteSeuBolo.tamanhoBoloNome01">
       </ion-col>
 
       <ion-col size=3>
-        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem02"></ion-img>
+        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem02" (click)="tiraFoto('T02')"></ion-img>
         <input type="text" class="imgcard" [(ngModel)]="monteSeuBolo.tamanhoBoloNome02">
       </ion-col>
 
       <ion-col size=3>
-        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem03"></ion-img>
+        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem03" (click)="tiraFoto('T03')"></ion-img>
         <input type="text" class="imgcard" [(ngModel)]="monteSeuBolo.tamanhoBoloNome03">
       </ion-col>
 
       <ion-col size=3>
-        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem04"></ion-img>
+        <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem04" (click)="tiraFoto('T04')"></ion-img>
         <input type="text" class="imgcard" [(ngModel)]="monteSeuBolo.tamanhoBoloNome04">
       </ion-col>
     </ion-row>

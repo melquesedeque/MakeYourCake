@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -17,12 +16,13 @@ export class AppComponent {
   idUsuarioLogado;
   nomeUsuario;
   idBolo;
+  usuarioLogado: boolean = false;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private rotas:Router
+    private rotas: Router
   ) {
     this.initializeApp();
   }
@@ -40,8 +40,20 @@ export class AppComponent {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    
-    firebase.auth().onAuthStateChanged(usuario => this.nomeUsuario = usuario.displayName);
+
+    firebase.auth().onAuthStateChanged(usuario => {
+      if (usuario != null) {
+        this.nomeUsuario = usuario.displayName;
+      }
+
+      var usuario = firebase.auth().currentUser;
+      if (usuario != null) {
+        this.usuarioLogado = true;
+        this.rotas.navigateByUrl('/consultar-produtos');
+      } else {
+        this.usuarioLogado = false;
+      }
+    });
 
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -49,19 +61,19 @@ export class AppComponent {
     });
   }
 
-  deslogar(){
+  deslogar() {
     firebase.auth().signOut();
     AutenticarGuardGuard.podeAcessar = false;
-    AutenticarGuardGuard.idUsuarioLogado = '00';
+    this.rotas.navigateByUrl('/login');
   }
 
-  montarBolo(){
-    let boloServive:MonteSeuBoloService = new MonteSeuBoloService
-    boloServive.buscarTodos().then(resultados =>{
+  montarBolo() {
+    let boloServive: MonteSeuBoloService = new MonteSeuBoloService;
+    boloServive.buscarTodos().then(resultados => {
       resultados.forEach(bolo => {
         this.idBolo = bolo.id;
       });
-      this.rotas.navigate(['/atualizar-monte-seu-bolo',this.idBolo]);
+      this.rotas.navigate(['/atualizar-monte-seu-bolo', this.idBolo]);
     }).catch(erro => console.log("Erro"));
   }
 }

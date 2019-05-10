@@ -13,8 +13,7 @@ const routes: Routes = [
   { path: 'cadastrar-produto',  canActivate:[AutenticarGuardGuard] ,loadChildren: './cadastrar-produto/cadastrar-produto.module#CadastrarProdutoPageModule' },
   { path: 'atualizar-deletar-produtos/:id',  canActivate:[AutenticarGuardGuard] ,loadChildren: './atualizar-deletar-produtos/atualizar-deletar-produtos.module#AtualizarDeletarProdutosPageModule' },
   { path: 'lista-produtos-cadastrados',  canActivate:[AutenticarGuardGuard] ,loadChildren: './lista-produtos-cadastrados/lista-produtos-cadastrados.module#ListaProdutosCadastradosPageModule' },
-  { path: 'cadastro-monte-seu-bolo', loadChildren: './cadastro-monte-seu-bolo/cadastro-monte-seu-bolo.module#CadastroMonteSeuBoloPageModule' },
-  { path: 'atualizar-monte-seu-bolo/:id', loadChildren: './atualizar-monte-seu-bolo/atualizar-monte-seu-bolo.module#AtualizarMonteSeuBoloPageModule' },
+  { path: 'atualizar-monte-seu-bolo/:id', canActivate:[AutenticarGuardGuard] ,loadChildren: './atualizar-monte-seu-bolo/atualizar-monte-seu-bolo.module#AtualizarMonteSeuBoloPageModule' },
 ];
 
 @NgModule({

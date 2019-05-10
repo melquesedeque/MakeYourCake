@@ -36,33 +36,28 @@ export class LoginPage implements OnInit {
     });
   }
 
-  /* async validarLogin() {
-
-    let logou = await this.user.logar(this.formulario.get('email').value, this.formulario.get('senha').value);
-    if (logou) {
-      this.listaUsuario.forEach(usuario => {
-        if (usuario.email == this.formulario.get('email').value && usuario.senha == this.formulario.get('senha').value) {
-          this.id = usuario.id;
-        }
-      });
-      this.rotas.navigate(['/consultar-produtos', this.id]);
-      AppComponent.logar = true;
-      AutenticarGuardGuard.podeAcessar = true;
-      AutenticarGuardGuard.idUsuarioLogado = this.id;
-    } else {
-      this.msg = "E-mail ou senha Incorreto";
-    }
-  } */
-  async validarLogin(){
-    firebase.auth().signInWithEmailAndPassword(this.formulario.get('email').value,this.formulario.get('senha').value).then(usuarioLogado =>{
-      if(usuarioLogado != null){
+  async validarLogin() {
+    firebase.auth().signInWithEmailAndPassword(this.formulario.get('email').value, this.formulario.get('senha').value).then(usuarioLogado => {
+      if (usuarioLogado != null) {
         AutenticarGuardGuard.podeAcessar = true;
         this.rotas.navigateByUrl('/consultar-produtos');
-        
       }
-    }).catch(erro =>{
+    }).catch(erro => {
       this.msg = "E-mail ou Senha Invalidos!";
     });
   }
 
+  visitante() {
+    firebase.auth().signInAnonymously().then(ok => {
+
+      if (ok != null) {
+        var user = firebase.auth().currentUser;
+        user.updateProfile({
+          displayName: 'Visitante',
+        }).then(certo => this.rotas.navigateByUrl('/consultar-produtos')).catch(erro => alert("Erro ao Tentar se Logar!"));
+      }
+    }).catch(erro => {
+      alert("Erro Logar");
+    });
+  }
 }

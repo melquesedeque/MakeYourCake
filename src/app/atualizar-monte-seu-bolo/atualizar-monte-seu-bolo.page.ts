@@ -31,14 +31,14 @@ export class AtualizarMonteSeuBoloPage implements OnInit {
   editar(){
     try {
      this.boloService.editar(this.monteSeuBolo);
-     alert('Produto Editado com Sucesso!');
+     alert('Bolo Editado com Sucesso!');
      this.rotas.navigateByUrl('monte-seu-bolo');
     } catch (error) {
       alert('Erro ao Editar Produto!');
     }
    }
  
-   /* tiraFoto(){
+   tiraFoto(tipo:string){
      const options: CameraOptions = {
        cameraDirection: this.camera.Direction.BACK,
        allowEdit: false,
@@ -52,16 +52,25 @@ export class AtualizarMonteSeuBoloPage implements OnInit {
      
      this.camera.getPicture(options).then((imageData) => {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.foto = base64Image;
+      if(tipo == "T01"){
+        this.monteSeuBolo.tamanhoBoloImagem01 = base64Image;
+      }else if(tipo == "T02"){
+        this.monteSeuBolo.tamanhoBoloImagem02 = base64Image;
+      }else if(tipo == "T03"){
+        this.monteSeuBolo.tamanhoBoloImagem03 = base64Image;
+      }else if(tipo == "T04"){
+        this.monteSeuBolo.tamanhoBoloImagem04 = base64Image;
+      }
+      
      }, (err) => {
        alert("Erro");
      });
-   } */
+   }
  
    async atualizar() {
      const alert = await this.msgAlerta.create({
        header: 'Atenção!',
-       message: 'Você Realmente Deseja Editar este Produto?',
+       message: 'Você Realmente Deseja Editar este Bolo?',
        buttons: [{text:'Cancelar'},{text:'Editar', handler: () =>{
          this.editar();
        } }]

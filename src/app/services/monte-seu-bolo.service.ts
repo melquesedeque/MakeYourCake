@@ -11,7 +11,7 @@ export class MonteSeuBoloService {
 
   constructor() {
     let userID = firebase.auth().currentUser.uid;
-    this.db = firebase.database().ref('MonteSeuBolo').child(userID);
+    this.db = firebase.database().ref('MonteSeuBolo');
   }
 
   cadastrar(bolo:MonteSeuBolo) {

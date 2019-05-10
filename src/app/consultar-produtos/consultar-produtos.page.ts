@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { ProdutosService } from '../services/produtos.service';
 import { UsuarioService } from '../services/usuario.service';
 import { MonteSeuBoloService } from '../services/monte-seu-bolo.service';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-consultar-produtos',
@@ -20,25 +21,9 @@ export class ConsultarProdutosPage implements OnInit {
 
   ionViewWillEnter() {
     this.menuBarra.enable(true); //Desabilita
-    //this.nomeUsuario = firebase.auth().currentUser.displayName;
-
     this.produtosService.buscarTodos().then(resultados =>{
       this.listaProdutos = resultados;
     });
-
-    /* this.produtos.getAll().then(resultado => {
-      this.listaProdutos = resultado;
-    }).catch((erro) => alert(erro));
-
-    if(this.id == '00'){
-      this.nomeUsuario="VISITANTE";
-    }else{
-      this.user.BuacarUsuarioPorId(this.id).then(resultado => {
-        resultado.forEach(usuario => {
-        this.nomeUsuario = usuario.nome;
-        });
-      });
-    } */
   }
 
   /* teste(){

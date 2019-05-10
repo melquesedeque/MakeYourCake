@@ -26,13 +26,8 @@ export class ListarCaracteristicasPage implements OnInit {
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtoService.buscar(this.id).then(resultado => {
-      console.log("Aqui!"+resultado.titulo);
       this.produtoObjeto = resultado;
     });
-    
-    /* this.produtos.BuacarProdutoPorId(this.id).then(resultado => {
-      this.produtoObjeto = resultado;
-    }); */
   }
 
   comprar(){
@@ -50,6 +45,6 @@ export class ListarCaracteristicasPage implements OnInit {
     toast.present();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
 }

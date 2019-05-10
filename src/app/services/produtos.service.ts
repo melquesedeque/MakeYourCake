@@ -11,7 +11,7 @@ export class ProdutosService {
 
   constructor() {
     let userID = firebase.auth().currentUser.uid;
-    this.db = firebase.database().ref('Produtos').child(userID);
+    this.db = firebase.database().ref('Produtos');
   }
 
   cadastrar(produto: Produto) {
