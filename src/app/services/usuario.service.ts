@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { BancoService } from './banco.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService extends BancoService {
+export class UsuarioService {
 
   /* public logar(email: string, senha:string): Promise<any> {
     return this.getDB().then((db:SQLiteObject) => {

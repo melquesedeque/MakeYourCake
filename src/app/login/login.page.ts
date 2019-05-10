@@ -58,6 +58,7 @@ export class LoginPage implements OnInit {
       if(usuarioLogado != null){
         AutenticarGuardGuard.podeAcessar = true;
         this.rotas.navigateByUrl('/consultar-produtos');
+        
       }
     }).catch(erro =>{
       this.msg = "E-mail ou Senha Invalidos!";

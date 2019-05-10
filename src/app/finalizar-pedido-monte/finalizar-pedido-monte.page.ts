@@ -19,7 +19,7 @@ export class FinalizarPedidoMontePage implements OnInit {
   comprar(){
     this.mensagemToast();
     this.vibracao.vibrate(1000);
-    this.rotas.navigate(['/consultar-produtos',AutenticarGuardGuard.idUsuarioLogado]);
+    this.rotas.navigateByUrl('/consultar-produtos');
   }
 
   async mensagemToast() {

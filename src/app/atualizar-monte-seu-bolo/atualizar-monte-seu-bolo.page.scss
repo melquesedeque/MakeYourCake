@@ -1,0 +1,58 @@
+ion-content{
+    --margin: 0px;
+    --background: linear-gradient(to bottom, rgb(250, 11, 11), rgb(51, 19, 8));
+}
+
+ion-toolbar{
+    --background:rgba(194, 6, 6, 0.94);
+}
+
+#menu{
+    color: white;
+}
+
+#imagemLogo{
+    max-width: 30%;
+    height: 85%;
+    position: fixed; 
+    top: 5px; 
+    left: 50%; 
+    margin-right: -50%; 
+    transform: translate(-50%, -0%) 
+}
+
+#titulo{
+    color: white;
+    text-align: center;
+}
+
+ion-card{
+    --background: rgb(243, 241, 237);
+}
+
+.escolher{
+    background-color:  rgba(255, 255, 255, 0.3);
+    width: 100%;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+}
+
+.escolher, .imgcard{
+    margin-top: 5px;
+    border: 10px;
+    width: 100%;
+}
+
+.imgcard{
+    background-color:  rgba(255, 255, 255, 0);
+}
+
+.escolher, .titulo{
+    text-align: center;
+    margin: 0px;
+}
+
+.escolher, .tituloImagem{
+    margin: 5px 0px 0px 0px;
+}

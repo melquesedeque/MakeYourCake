@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BancoService } from './banco.service';
+import { MonteSeuBoloService } from './monte-seu-bolo.service';
 
-describe('BancoService', () => {
+describe('MonteSeuBoloService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BancoService = TestBed.get(BancoService);
+    const service: MonteSeuBoloService = TestBed.get(MonteSeuBoloService);
     expect(service).toBeTruthy();
   });
 });

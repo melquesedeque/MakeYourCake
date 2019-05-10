@@ -14,14 +14,14 @@ export class AtualizarDeletarProdutosPage implements OnInit {
 
   id;
   foto;
-  listaProdutos: Produto;
+  listaProduto: Produto = new Produto;
   constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produtosService:ProdutosService, private camera:Camera) { }
 
   ionViewWillEnter(){
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtosService.buscar(this.id).then(resultado => {
-        this.listaProdutos = resultado;
-        this.foto = this.listaProdutos.imagem;
+        this.listaProduto = resultado;
+        this.foto = this.listaProduto.imagem;
     });
     /* this.produto.BuacarProdutoPorId(this.id).then(resultado => {
       resultado.forEach(element => {
@@ -32,12 +32,10 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   }
   ngOnInit() { }
 
-  /* editar(){
+   editar(){
    try {
-    this.listaProdutos.imagem = this.foto;
-    this.produto.editarProdutos(this.listaProdutos, this.id);
-
-    
+    this.listaProduto.imagem = this.foto;
+    this.produtosService.editar(this.listaProduto);
     alert('Produto Editado com Sucesso!');
     this.rotas.navigateByUrl('lista-produtos-cadastrados');
    } catch (error) {
@@ -47,7 +45,7 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   
   deletarProduto(){
     try {
-      this.produto.deletarProduto(this.id);
+      this.produtosService.excluir(this.id);
       alert('Produto Deletado com Sucesso!');
       this.rotas.navigateByUrl('lista-produtos-cadastrados');
     } catch (error) {
@@ -97,5 +95,5 @@ export class AtualizarDeletarProdutosPage implements OnInit {
     });
   
     await alert.present();
-  } */
+  }
 }

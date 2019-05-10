@@ -21,6 +21,9 @@
           <ion-item [routerLink]="['/monte-seu-bolo']">
             <ion-icon slot="start" name="pizza"></ion-icon> Monte Seu Bolo
           </ion-item>
+          <ion-item (click)="montarBolo()">
+            <ion-icon slot="start" name="pizza"></ion-icon> Atualizar Monte Seu Bolo
+          </ion-item>
           <ion-item [routerLink]="['/cadastrar-produto']">
             <ion-icon slot="start" name="add"></ion-icon> Cadastrar Produto
           </ion-item>

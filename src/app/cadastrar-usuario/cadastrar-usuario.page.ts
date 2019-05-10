@@ -57,11 +57,10 @@ export class CadastrarUsuarioPage implements OnInit {
         var user = firebase.auth().currentUser;
         user.updateProfile({
           displayName: this.formulario.get('nome').value,
-        }).then(certo => 
-          this.rotas.navigateByUrl('/consultar-produtos'));
+        }).then(certo => this.rotas.navigateByUrl('/consultar-produtos')).catch(erro => alert("Erro ao Tentar se Cadastrar!"));
       }
     }).catch(erro => {
-      alert("Erro!");
+      alert("Erro ao tentar se Cadastrar!");
     })
   }
 

@@ -16,23 +16,23 @@
     <h3 class="titulo">Tamanho do Bolo</h3>
     <ion-row>
         <ion-col size="3"> 
-          <ion-img class="imgcard" src="../../assets/img/ind.png"></ion-img>
-          <p class="tituloImagem">Individual</p>
+          <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem01"></ion-img>
+          <p class="tituloImagem">{{monteSeuBolo.tamanhoBoloNome01}}</p>
         </ion-col>
     
         <ion-col size=3>
-          <ion-img class="imgcard" src="../../assets/img/peq.png"></ion-img>
-          <p class="tituloImagem">Pequena (10 Fatias)</p>
+          <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem02"></ion-img>
+          <p class="tituloImagem">{{monteSeuBolo.tamanhoBoloNome02}}</p>
         </ion-col>
 
         <ion-col size=3>
-          <ion-img class="imgcard" src="../../assets/img/med.png"></ion-img>
-          <p class="tituloImagem">Média (25 Fatias)</p>
+          <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem03"></ion-img>
+          <p class="tituloImagem">{{monteSeuBolo.tamanhoBoloNome03}}</p>
         </ion-col>
 
           <ion-col size=3>
-            <ion-img class="imgcard" src="../../assets/img/gra.png"></ion-img>
-            <p class="tituloImagem">Grande (35 Fatias)</p>
+            <ion-img class="imgcard" [src]="monteSeuBolo.tamanhoBoloImagem04"></ion-img>
+            <p class="tituloImagem">{{monteSeuBolo.tamanhoBoloNome04}}</p>
           </ion-col>
       </ion-row>
   </div>
@@ -41,23 +41,23 @@
       <h3 class="titulo">Escolha a Massa</h3>
       <ion-row>
           <ion-col size="3"> 
-            <ion-img class="imgcard" src="../../assets/img/Massa_Tradicional.png"></ion-img>
-            <p class="tituloImagem">Tradicional</p>
+            <ion-img class="imgcard" [src]="monteSeuBolo.massaImagem01"></ion-img>
+            <p class="tituloImagem">{{monteSeuBolo.massaNome01}}</p>
           </ion-col>
       
           <ion-col size=3>
-            <ion-img class="imgcard" src="../../assets/img/choc.png"></ion-img>
-            <p class="tituloImagem">Chocolate</p>
+            <ion-img class="imgcard" [src]="monteSeuBolo.massaImagem02"></ion-img>
+            <p class="tituloImagem">{{monteSeuBolo.massaNome02}}</p>
           </ion-col>
   
           <ion-col size=3>
-            <ion-img class="imgcard" src="../../assets/img/baunilha.png"></ion-img>
-            <p class="tituloImagem">Baunilha</p>
+            <ion-img class="imgcard" [src]="monteSeuBolo.massaImagem03"></ion-img>
+            <p class="tituloImagem">{{monteSeuBolo.massaNome03}}</p>
           </ion-col>
   
             <ion-col size=3>
-              <ion-img class="imgcard" src="../../assets/img/Massa_Limao.png"></ion-img>
-              <p class="tituloImagem">limão</p>
+              <ion-img class="imgcard" [src]="monteSeuBolo.massaImagem04"></ion-img>
+              <p class="tituloImagem">{{monteSeuBolo.massaNome04}}</p>
             </ion-col>
         </ion-row>
     </div>
@@ -66,23 +66,23 @@
         <h3 class="titulo">Escolha o Recheio</h3>
         <ion-row>
             <ion-col size="3"> 
-              <ion-img class="imgcard" src="../../assets/img/briga.png"></ion-img>
-              <p class="tituloImagem">Brigadeiro</p>
+              <ion-img class="imgcard" [src]="monteSeuBolo.recheioImagem01"></ion-img>
+              <p class="tituloImagem">{{monteSeuBolo.recheioNome01}}</p>
             </ion-col>
         
             <ion-col size=3>
-              <ion-img class="imgcard" src="../../assets/img/briga-branco.png"></ion-img>
-              <p class="tituloImagem">Chocolate</p>
+              <ion-img class="imgcard" [src]="monteSeuBolo.recheioImagem02"></ion-img>
+              <p class="tituloImagem">{{monteSeuBolo.recheioNome02}}</p>
             </ion-col>
     
             <ion-col size=3>
-              <ion-img class="imgcard" src="../../assets/img/doce-leite.png"></ion-img>
-              <p class="tituloImagem">Doce de Leite</p>
+              <ion-img class="imgcard" [src]="monteSeuBolo.recheioImagem03"></ion-img>
+              <p class="tituloImagem">{{monteSeuBolo.recheioNome03}}</p>
             </ion-col>
     
               <ion-col size=3>
-                <ion-img class="imgcard" src="../../assets/img/nutella.png"></ion-img>
-                <p class="tituloImagem">Nutella</p>
+                <ion-img class="imgcard" [src]="monteSeuBolo.recheioImagem04"></ion-img>
+                <p class="tituloImagem">{{monteSeuBolo.recheioNome04}}</p>
               </ion-col>
           </ion-row>
       </div>
@@ -91,23 +91,23 @@
           <h3 class="titulo">Escolha os Toppings</h3>
           <ion-row>
               <ion-col size="3"> 
-                <ion-img class="imgcard" src="../../assets/img/oreo.png"></ion-img>
-                <p class="tituloImagem">Oreo</p>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem01"></ion-img>
+                <p class="tituloImagem">{{monteSeuBolo.ToppingsNome01}}</p>
               </ion-col>
           
               <ion-col size=3>
-                <ion-img class="imgcard" src="../../assets/img/top-chocolate.png"></ion-img>
-                <p class="tituloImagem">Raspas de Chocolate</p>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem02"></ion-img>
+                <p class="tituloImagem">{{monteSeuBolo.ToppingsNome02}}</p>
               </ion-col>
       
               <ion-col size=3>
-                <ion-img class="imgcard" src="../../assets/img/Top-KitKat.png"></ion-img>
-                <p class="tituloImagem">KitKat</p>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem03"></ion-img>
+                <p class="tituloImagem">{{monteSeuBolo.ToppingsNome03}}</p>
               </ion-col>
       
                 <ion-col size=3>
-                  <ion-img class="imgcard" src="../../assets/img/morango.png"></ion-img>
-                  <p class="tituloImagem">Morango</p>
+                  <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem04"></ion-img>
+                  <p class="tituloImagem">{{monteSeuBolo.ToppingsNome04}}</p>
                 </ion-col>
             </ion-row>
         </div>

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AutenticarGuardGuard } from './VerificarURL/autenticar-guard.guard';
 import { Router } from '@angular/router';
 import * as firebase from "firebase";
+import { MonteSeuBoloService } from './services/monte-seu-bolo.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
 
   idUsuarioLogado;
   nomeUsuario;
+  idBolo;
 
   constructor(
     private platform: Platform,
@@ -51,5 +53,15 @@ export class AppComponent {
     firebase.auth().signOut();
     AutenticarGuardGuard.podeAcessar = false;
     AutenticarGuardGuard.idUsuarioLogado = '00';
+  }
+
+  montarBolo(){
+    let boloServive:MonteSeuBoloService = new MonteSeuBoloService
+    boloServive.buscarTodos().then(resultados =>{
+      resultados.forEach(bolo => {
+        this.idBolo = bolo.id;
+      });
+      this.rotas.navigate(['/atualizar-monte-seu-bolo',this.idBolo]);
+    }).catch(erro => console.log("Erro"));
   }
 }

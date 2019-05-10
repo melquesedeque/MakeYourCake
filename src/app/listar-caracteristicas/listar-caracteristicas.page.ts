@@ -19,7 +19,7 @@ export class ListarCaracteristicasPage implements OnInit {
   titulo;
   descricao;
   valor;
-  produtoObjeto: Produto;
+  produtoObjeto: Produto = new Produto;
 
   constructor(private pegarIdBolo:ActivatedRoute, private toast:ToastController, private produtoService:ProdutosService, private rotas:Router, private vibracao:Vibration) { }
 
