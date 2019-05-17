@@ -18,19 +18,19 @@
           <ion-item [routerLink]="['/login']" *ngIf="!usuarioLogado">
             <ion-icon slot="start" name="exit"></ion-icon> Logar
           </ion-item>
-          <ion-item [routerLink]="['/consultar-produtos']" routerLinkActive="router-link-active">
+          <ion-item [routerLink]="['/consultar-produtos']">
             <ion-icon slot="start" name="search"></ion-icon> Catálogo dos Produtos
           </ion-item>
           <ion-item [routerLink]="['/monte-seu-bolo']">
             <ion-icon slot="start" name="pizza"></ion-icon> Monte Seu Bolo
           </ion-item>
-          <ion-item (click)="montarBolo()">
+          <ion-item (click)="montarBolo()" *ngIf="UsuarioAdmin">
             <ion-icon slot="start" name="pizza"></ion-icon> Atualizar Monte Seu Bolo
           </ion-item>
-          <ion-item [routerLink]="['/cadastrar-produto']">
+          <ion-item [routerLink]="['/cadastrar-produto']" *ngIf="UsuarioAdmin">
             <ion-icon slot="start" name="add"></ion-icon> Cadastrar Produto
           </ion-item>
-          <ion-item [routerLink]="['/lista-produtos-cadastrados']">
+          <ion-item [routerLink]="['/lista-produtos-cadastrados']" *ngIf="UsuarioAdmin">
             <ion-icon slot="start" name="list"></ion-icon> Lista dos Produtos
           </ion-item>
           <ion-item (click)="deslogar()" *ngIf="usuarioLogado">

@@ -6,6 +6,8 @@ import { AutenticarGuardGuard } from './VerificarURL/autenticar-guard.guard';
 import { Router } from '@angular/router';
 import * as firebase from "firebase";
 import { MonteSeuBoloService } from './services/monte-seu-bolo.service';
+import { UsuarioService } from './services/usuario.service';
+
 
 @Component({
   selector: 'app-root',
@@ -17,13 +19,14 @@ export class AppComponent {
   nomeUsuario;
   idBolo;
   usuarioLogado: boolean = false;
+  UsuarioAdmin: boolean = true;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private rotas: Router
-  ) {
+    private rotas: Router) {
+
     this.initializeApp();
   }
 
@@ -42,14 +45,28 @@ export class AppComponent {
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(usuario => {
+
       if (usuario != null) {
         this.nomeUsuario = usuario.displayName;
+        console.log(usuario.displayName);
+        var usuarioService: UsuarioService = new UsuarioService;
+        usuarioService.buscarEmail(usuario.email).then(resultado => {
+          if (resultado.tipoUsuario == "Admin") {
+            this.UsuarioAdmin = true;
+          } else {
+            this.UsuarioAdmin = false;
+          }
+        });
       }
 
       var usuario = firebase.auth().currentUser;
       if (usuario != null) {
-        this.usuarioLogado = true;
-        this.rotas.navigateByUrl('/consultar-produtos');
+        if (usuario.displayName != "Visitante") {
+          this.usuarioLogado = true;
+          this.rotas.navigateByUrl('/consultar-produtos');
+        }else{
+          this.usuarioLogado = false;
+        }
       } else {
         this.usuarioLogado = false;
       }
@@ -62,6 +79,13 @@ export class AppComponent {
   }
 
   deslogar() {
+    var usuario = firebase.auth().currentUser;
+    if (usuario.displayName == 'Visitante') {
+      usuario.delete().then(deletar => {
+        console.log("Visitante Deletado");
+      });
+    }
+
     firebase.auth().signOut();
     AutenticarGuardGuard.podeAcessar = false;
     this.rotas.navigateByUrl('/login');

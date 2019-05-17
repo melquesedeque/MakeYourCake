@@ -60,6 +60,30 @@ export class AtualizarMonteSeuBoloPage implements OnInit {
         this.monteSeuBolo.tamanhoBoloImagem03 = base64Image;
       }else if(tipo == "T04"){
         this.monteSeuBolo.tamanhoBoloImagem04 = base64Image;
+      }else if(tipo == "M01"){
+        this.monteSeuBolo.massaImagem01 = base64Image;
+      }else if(tipo == "M02"){
+        this.monteSeuBolo.massaImagem02 = base64Image;
+      }else if(tipo == "M03"){
+        this.monteSeuBolo.massaImagem03 = base64Image;
+      }else if(tipo == "M04"){
+        this.monteSeuBolo.massaImagem04 = base64Image;
+      }else if(tipo == "R01"){
+        this.monteSeuBolo.recheioImagem01 = base64Image;
+      }else if(tipo == "R02"){
+        this.monteSeuBolo.recheioImagem02 = base64Image;
+      }else if(tipo == "R03"){
+        this.monteSeuBolo.recheioImagem03 = base64Image;
+      }else if(tipo == "R04"){
+        this.monteSeuBolo.recheioImagem04 = base64Image;
+      }else if(tipo == "TO01"){
+        this.monteSeuBolo.ToppingsImagem01 = base64Image;
+      }else if(tipo == "TO02"){
+        this.monteSeuBolo.ToppingsImagem02 = base64Image;
+      }else if(tipo == "TO03"){
+        this.monteSeuBolo.ToppingsImagem03 = base64Image;
+      }else if(tipo == "TO04"){
+        this.monteSeuBolo.ToppingsImagem04 = base64Image;
       }
       
      }, (err) => {

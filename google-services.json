@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "76958762949",
+    "firebase_url": "https://makeyourcake-fb179.firebaseio.com",
+    "project_id": "makeyourcake-fb179",
+    "storage_bucket": "makeyourcake-fb179.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76958762949:android:026c133064af6dc0",
+        "android_client_info": {
+          "package_name": "com.makeyourcake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76958762949-3scb5cr75s9o8d2vsr82ch5iip7ji6gs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMHT5_FmPhgyva3ITZGD1XkNFnxtdNGoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76958762949-3scb5cr75s9o8d2vsr82ch5iip7ji6gs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

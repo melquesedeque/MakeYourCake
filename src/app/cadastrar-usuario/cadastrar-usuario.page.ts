@@ -16,7 +16,7 @@ export class CadastrarUsuarioPage implements OnInit {
   id;
   formulario: FormGroup;
 
-  constructor(private formBilder: FormBuilder, private user: UsuarioService, private rotas: Router, private menuBarra: MenuController) { }
+  constructor(private formBilder: FormBuilder, private userService: UsuarioService, private rotas: Router, private menuBarra: MenuController) { }
 
   ngOnInit() {
     this.formulario = this.formBilder.group({
@@ -31,7 +31,7 @@ export class CadastrarUsuarioPage implements OnInit {
   }
 
   cadastrar() {
-
+    
     firebase.auth().createUserWithEmailAndPassword(this.formulario.get('email').value, this.formulario.get('senha').value).then(usuarioLogado => {
       if (usuarioLogado != null) {
         AutenticarGuardGuard.podeAcessar = true;
@@ -39,11 +39,10 @@ export class CadastrarUsuarioPage implements OnInit {
         var user = firebase.auth().currentUser;
         user.updateProfile({
           displayName: this.formulario.get('nome').value,
-        }).then(certo => this.rotas.navigateByUrl('/consultar-produtos')).catch(erro => alert("Erro ao Tentar se Cadastrar!"));
+        }).then(certo => { this.rotas.navigateByUrl('/consultar-produtos')}).catch(erro => alert("Erro ao Tentar se Cadastrar!"));
       }
-    }).catch(erro => {
-      alert("Erro ao tentar se Cadastrar!");
-    })
+    }).catch(erro => {alert("Erro ao tentar se Cadastrar!")});
   }
+
 
 }
