@@ -88,6 +88,8 @@ export class AtualizarMonteSeuBoloPage implements OnInit {
       
      }, (err) => {
        alert("Erro");
+     }).catch(erro =>{
+       alert("Erro ao Anexar Imagem " +erro);
      });
    }
  

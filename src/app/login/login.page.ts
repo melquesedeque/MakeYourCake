@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
     });
 
     this.admob.banner.config({
-      id: 'ca-app-pub-8227759296789109/3726902224',
+      id: 'ca-app-pub-8890411738087560/2097243905',
       isTesting:true, //Está em ambiente de teste
       autoShow: true
       });
