@@ -7,7 +7,8 @@ import { IonicModule, MenuController } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
 import { ServicesModule } from '../services/services.module';
-
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx'
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +25,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     ServicesModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
+  providers:[AdMobFree, GooglePlus]
 })
 export class LoginPageModule {
 

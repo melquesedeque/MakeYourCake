@@ -43,7 +43,8 @@ export class AppComponent {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
+    firebase.auth().languageCode = 'pt';
+    
     firebase.auth().onAuthStateChanged(usuario => {
 
       if (usuario != null) {

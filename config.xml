@@ -87,4 +87,11 @@
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="cordova-plugin-vibration" spec="3.1.0" />
     <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
+    <plugin name="cordova-plugin-admob-free" spec="0.26.0">
+        <variable name="ADMOB_APP_ID" value="ca-app-pub-8227759296789109~1844842902" />
+    </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="7.0.1">
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
+    <engine name="android" spec="7.1.4" />
 </widget>
