@@ -80,7 +80,6 @@ export class LoginPage implements OnInit {
      firebase.auth().signInWithPopup(provider).then(resultado => {
        var token = resultado.credential.providerId;
        var usuario = resultado.user;
-       alert("Olha o Token "+token)+" Olha o Usuario "+usuario.email;
      }).catch(erro => {
        alert("Olha o Erro "+erro);
      });

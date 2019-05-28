@@ -91,26 +91,26 @@
           <h3 class="titulo">Escolha os Toppings</h3>
           <ion-row>
               <ion-col size="3"> 
-                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem01"></ion-img>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem01" (click)="monteBolo('oreo')"></ion-img>
                 <p class="tituloImagem">{{monteSeuBolo.ToppingsNome01}}</p>
               </ion-col>
           
               <ion-col size=3>
-                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem02"></ion-img>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem02" (click)="monteBolo('raspas')"></ion-img>
                 <p class="tituloImagem">{{monteSeuBolo.ToppingsNome02}}</p>
               </ion-col>
       
               <ion-col size=3>
-                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem03"></ion-img>
+                <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem03" (click)="monteBolo('kitkat')"></ion-img>
                 <p class="tituloImagem">{{monteSeuBolo.ToppingsNome03}}</p>
               </ion-col>
       
                 <ion-col size=3>
-                  <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem04"></ion-img>
+                  <ion-img class="imgcard" [src]="monteSeuBolo.ToppingsImagem04" (click)="monteBolo('morango')"></ion-img>
                   <p class="tituloImagem">{{monteSeuBolo.ToppingsNome04}}</p>
                 </ion-col>
             </ion-row>
         </div>
 
-        <ion-button color="light" expand="full" fill="outline" shape="round" [routerLink]="['/finalizar-pedido-monte']">Finalizar Pedido</ion-button>
+        <ion-button color="light" expand="full" fill="outline" shape="round" (click)="finalizarPedido()">Finalizar Pedido</ion-button>
 </ion-content>

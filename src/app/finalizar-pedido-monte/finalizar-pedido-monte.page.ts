@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
 import { ToastController } from '@ionic/angular';
@@ -11,9 +11,35 @@ import { ToastController } from '@ionic/angular';
 })
 export class FinalizarPedidoMontePage implements OnInit {
 
-  constructor(private rotas:Router, private vibracao:Vibration,private toast:ToastController) { }
+  foto;
+  descricao;
+  valor;
+  estruturaBolo;
+  constructor(private rotas:Router, private vibracao:Vibration,private toast:ToastController, private pegarNomeBolo:ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+    this.estruturaBolo = this.pegarNomeBolo.snapshot.params['id'];
+    console.log(this.estruturaBolo);
+    if(this.estruturaBolo == "oreo"){
+      this.foto = '../../assets/img/bolo-card-6.jpg';
+      this.valor = '150,00';
+      this.descricao = 'Bolo de Oreo Feito para você!';
+    }else if(this.estruturaBolo == "raspas"){
+      this.foto = '../../assets/img/bolo-card-8.jpg';
+      this.valor = '100,00';
+      this.descricao = 'Bolo de Raspas de Chocolate Todo especial Feito para você!';
+    }else if(this.estruturaBolo == "kitkat"){
+      this.foto = '../../assets/img/bolo-card-5.jpg';
+      this.valor = '200,00';
+      this.descricao = 'Um delicioso Bolo de Kitkat Feito para você!';
+    }else{
+      this.foto = '../../assets/img/bolo-card-7.jpg';
+      this.valor = '350,00';
+      this.descricao = 'Bolo de Morango mais do Bom Feito para você!';
+    }
   }
 
   comprar(){

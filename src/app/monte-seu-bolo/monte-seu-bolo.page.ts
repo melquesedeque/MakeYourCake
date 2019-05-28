@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MonteSeuBoloService } from '../services/monte-seu-bolo.service';
 import { MonteSeuBolo } from '../models/monte-seu-bolo';
 
@@ -11,8 +11,9 @@ import { MonteSeuBolo } from '../models/monte-seu-bolo';
 export class MonteSeuBoloPage implements OnInit {
 
   id;
+  tipoBolo:string;
   monteSeuBolo:MonteSeuBolo = new MonteSeuBolo;
-  constructor(private boloService:MonteSeuBoloService,private pegarIdBolo:ActivatedRoute) {}
+  constructor(private rotas:Router,private boloService:MonteSeuBoloService,private pegarIdBolo:ActivatedRoute) {}
 
   ngOnInit() {
   }
@@ -25,4 +26,19 @@ export class MonteSeuBoloPage implements OnInit {
     }).catch(erro => alert('ERRO'));
   }
 
+  public monteBolo(tipo:string){
+    if(tipo == "kitkat"){
+      this.tipoBolo = tipo;
+    }else if(tipo == "oreo"){
+      this.tipoBolo = tipo;
+    }else if(tipo == "raspas"){
+      this.tipoBolo = tipo;
+    }else if(tipo == "morango"){
+      this.tipoBolo = tipo;
+    }
+  }
+
+  finalizarPedido(){
+    this.rotas.navigate(['finalizar-pedido-monte',this.tipoBolo]);
+  }
 }
