@@ -1,0 +1,53 @@
+ion-content{
+    --background: linear-gradient(to bottom, rgb(250, 11, 11), rgb(51, 19, 8));
+    --margin:0px;
+}
+
+ion-toolbar{
+    --background:rgba(194, 6, 6, 0.94);
+}
+
+#menu{
+    color: white;
+}
+
+#imagemLogo{
+    max-width: 30%;
+    height: 85%;
+    position: fixed; 
+    top: 5px; 
+    left: 50%; 
+    margin-right: -50%; 
+    transform: translate(-50%, -0%) 
+}
+
+h1{
+    text-align: center !important; 
+    font-size: 30px;
+    font-style: unset;
+    margin-top: 10%;
+    color: white;
+}
+
+#label{
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+ion-list {
+    --ion-item-background: rgba(202, 156, 156, 0);
+    border-radius: 5px;
+}
+
+ion-item{
+    color: white;
+}
+
+h3, p{
+    color: white;
+}
+
+h4{
+    color: white;
+    text-align: center;
+}

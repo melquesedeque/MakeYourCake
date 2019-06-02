@@ -18,4 +18,15 @@ export class ComprasService {
     let uid = this.db.push().key;
     this.db.child(IdCliete).child(uid).set(compras);
   }
+
+  async buscarTodosPorID(id:string): Promise<Compras[]> {
+    return this.db.child(id).once('value').then(snapshot => {
+      let produtos = [];
+      snapshot.forEach(produto => {
+        produtos.push(produto.val());
+      })
+
+      return produtos;
+    });
+  }
 }

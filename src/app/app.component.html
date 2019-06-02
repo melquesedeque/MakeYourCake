@@ -24,6 +24,9 @@
           <ion-item [routerLink]="['/monte-seu-bolo']">
             <ion-icon slot="start" name="pizza"></ion-icon> Monte Seu Bolo
           </ion-item>
+          <ion-item [routerLink]="['/minha-compras']" *ngIf="!UsuarioAdmin">
+            <ion-icon slot="start" name="cart"></ion-icon> Minhas Compras
+          </ion-item>
           <ion-item (click)="montarBolo()" *ngIf="UsuarioAdmin">
             <ion-icon slot="start" name="pizza"></ion-icon> Atualizar Monte Seu Bolo
           </ion-item>

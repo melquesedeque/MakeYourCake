@@ -59,7 +59,7 @@ export class FinalizarPedidoMontePage implements OnInit {
     this.compras.idCompra = "";
     this.compras.titulo = this.titulo;
     this.compras.descricao = this.descricao;
-    this.compras.valor = this.descricao;
+    this.compras.valor = this.valor;
     this.compras.imagem = this.foto;
     this.compras.dataComprar = `0${data.getDate()}/0${data.getMonth() + 1}/${data.getFullYear()}`;
 
