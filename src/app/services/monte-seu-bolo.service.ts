@@ -10,7 +10,6 @@ export class MonteSeuBoloService {
   private db: firebase.database.Reference;
 
   constructor() {
-    let userID = firebase.auth().currentUser.uid;
     this.db = firebase.database().ref('MonteSeuBolo');
   }
 
