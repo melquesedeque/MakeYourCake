@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
-import { MenuController } from '@ionic/angular';
+import { MenuController, LoadingController } from '@ionic/angular';
 import { ProdutosService } from '../services/produtos.service';
 import { UsuarioService } from '../services/usuario.service';
 import { MonteSeuBoloService } from '../services/monte-seu-bolo.service';
@@ -19,12 +19,15 @@ export class ConsultarProdutosPage implements OnInit {
   nomeUsuario;
   listaProdutos: any = [];
   contaUsuario: Usuario = new Usuario;
-  constructor(private usuarioService: UsuarioService, private boloservive: MonteSeuBoloService, private menuBarra: MenuController, private produtosService: ProdutosService, private idUsuario: ActivatedRoute) { }
+  loading;
+  constructor(private loadingController: LoadingController,private usuarioService: UsuarioService, private boloservive: MonteSeuBoloService, private menuBarra: MenuController, private produtosService: ProdutosService, private idUsuario: ActivatedRoute) { }
 
   ionViewWillEnter() {
     this.menuBarra.enable(true); //Desabilita
+    this.carregando();
     this.produtosService.buscarTodos().then(resultados => {
       this.listaProdutos = resultados;
+      this.loading.dismiss();
     });
 
     var user = firebase.auth().currentUser;
@@ -37,21 +40,21 @@ export class ConsultarProdutosPage implements OnInit {
           this.contaUsuario.tipoUsuario = "Comun";
 
           try {
-            console.log('Cadastrando Usuário!');
-            console.log(this.contaUsuario.id);
-            console.log(this.contaUsuario.nome);
-            console.log(this.contaUsuario.email);
-            console.log(this.contaUsuario.tipoUsuario);
             this.usuarioService.cadastrar(this.contaUsuario);
           } catch (error) {
             alert("ERRO");
           }
         }
-      } else {
-        console.log("Usuario Cadastrato!");
       }
     });
   }
+
+  async carregando() {
+    this.loading = await this.loadingController.create({
+     message: 'Carregando...',
+   });
+   await this.loading.present();
+ }
 
   /* teste(){
     console.log("AQui");

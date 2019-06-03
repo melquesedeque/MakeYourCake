@@ -31,22 +31,22 @@ export class FinalizarPedidoMontePage implements OnInit {
     if (this.estruturaBolo == "oreo") {
       this.titulo = "Bolo de Oreo"
       this.foto = '../../assets/img/bolo-card-6.jpg';
-      this.valor = '150,00';
+      this.valor = 'R$ 150,00';
       this.descricao = 'Bolo de Oreo Feito para você!';
     } else if (this.estruturaBolo == "raspas") {
       this.titulo = "Bolo de Raspas de Chocolate"
       this.foto = '../../assets/img/bolo-card-8.jpg';
-      this.valor = '100,00';
+      this.valor = 'R$ 100,00';
       this.descricao = 'Bolo de Raspas de Chocolate Todo especial Feito para você!';
     } else if (this.estruturaBolo == "kitkat") {
       this.titulo = "Bolo de KITKAT"
       this.foto = '../../assets/img/bolo-card-5.jpg';
-      this.valor = '200,00';
+      this.valor = 'R$ 200,00';
       this.descricao = 'Um delicioso Bolo de Kitkat Feito para você!';
     } else {
       this.titulo = "Bolo de Morango"
       this.foto = '../../assets/img/bolo-card-7.jpg';
-      this.valor = '350,00';
+      this.valor = 'R$ 350,00';
       this.descricao = 'Bolo de Morango mais do Bom Feito para você!';
     }
   }

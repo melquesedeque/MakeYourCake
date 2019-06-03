@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MonteSeuBolo } from '../models/monte-seu-bolo';
 import { MonteSeuBoloService } from '../services/monte-seu-bolo.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { ProdutosService } from '../services/produtos.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
@@ -15,16 +15,25 @@ export class AtualizarMonteSeuBoloPage implements OnInit {
 
   monteSeuBolo:MonteSeuBolo = new MonteSeuBolo;
   id;
+  loading;
+  constructor(private loadingController: LoadingController, private boloService:MonteSeuBoloService,private pegarIdBolo:ActivatedRoute,private msgAlerta:AlertController,private rotas:Router,private produtosService:ProdutosService, private camera:Camera) { }
 
-  constructor(private boloService:MonteSeuBoloService,private pegarIdBolo:ActivatedRoute,private msgAlerta:AlertController,private rotas:Router,private produtosService:ProdutosService, private camera:Camera) { }
+  async carregando() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    await this.loading.present();
+  }
 
   ngOnInit() {
   }
 
   ionViewWillEnter(){
+    this.carregando();
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.boloService.buscar(this.id).then(resultado =>{
       this.monteSeuBolo = resultado;
+      this.loading.dismiss();
     });
   }
 

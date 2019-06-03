@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProdutosService } from '../services/produtos.service';
 import { Produto } from '../models/produto';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-atualizar-deletar-produtos',
@@ -15,21 +15,26 @@ export class AtualizarDeletarProdutosPage implements OnInit {
   id;
   foto;
   listaProduto: Produto = new Produto;
-  constructor(private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produtosService:ProdutosService, private camera:Camera) { }
+  loading;
+  constructor(private loadingController: LoadingController, private msgAlerta:AlertController,private rotas:Router, private pegarIdBolo:ActivatedRoute, private produtosService:ProdutosService, private camera:Camera) { }
 
   ionViewWillEnter(){
+    this.carregando();
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtosService.buscar(this.id).then(resultado => {
         this.listaProduto = resultado;
         this.foto = this.listaProduto.imagem;
+        this.loading.dismiss();
     });
-    /* this.produto.BuacarProdutoPorId(this.id).then(resultado => {
-      resultado.forEach(element => {
-        this.listaProdutos = element;
-        this.foto = this.listaProdutos.imagem;
-      });
-    }); */
   }
+
+  async carregando() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    await this.loading.present();
+  }
+
   ngOnInit() { }
 
    editar(){

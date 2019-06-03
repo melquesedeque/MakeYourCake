@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticarGuardGuard } from '../VerificarURL/autenticar-guard.guard';
-import { MenuController } from '@ionic/angular';
+import { MenuController, LoadingController } from '@ionic/angular';
 import { UsuarioService } from '../services/usuario.service';
 import { async } from 'q';
 import { AppComponent } from '../app.component';
@@ -23,8 +23,9 @@ export class LoginPage implements OnInit {
   verificarEMail = false;
   verificarSenha = false;
   formulario: FormGroup;
+  loading;
 
-  constructor(private admob:AdMobFree,private formBuilder: FormBuilder, private rotas: Router, private menuBarra: MenuController, private user: UsuarioService, private googlePlus:GooglePlus) {
+  constructor(private loadingController: LoadingController, private admob:AdMobFree,private formBuilder: FormBuilder, private rotas: Router, private menuBarra: MenuController, private user: UsuarioService, private googlePlus:GooglePlus) {
   }
 
   ionViewWillEnter() {
@@ -34,8 +35,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.msg = "";
     this.formulario = this.formBuilder.group({
-      email: ['ze@gmail.com', [Validators.email, Validators.required]],
-      senha: ['123456', [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     this.admob.banner.config({
@@ -47,9 +48,11 @@ export class LoginPage implements OnInit {
   }
 
   async validarLogin() {
+    this.carregando();
     firebase.auth().signInWithEmailAndPassword(this.formulario.get('email').value, this.formulario.get('senha').value).then(usuarioLogado => {
       if (usuarioLogado != null) {
         AutenticarGuardGuard.podeAcessar = true;
+        this.loading.dismiss();
         this.rotas.navigateByUrl('/consultar-produtos');
       }
     }).catch(erro => {
@@ -69,6 +72,13 @@ export class LoginPage implements OnInit {
     }).catch(erro => {
       alert("Erro Logar");
     });
+  }
+
+  async carregando() {
+     this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    await this.loading.present();
   }
 
   loginGoogle(){

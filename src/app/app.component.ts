@@ -49,7 +49,6 @@ export class AppComponent {
 
       if (usuario != null) {
         this.nomeUsuario = usuario.displayName;
-        console.log(usuario.displayName);
         var usuarioService: UsuarioService = new UsuarioService;
         usuarioService.buscarEmail(usuario.email).then(resultado => {
           if (resultado.tipoUsuario == "Admin") {

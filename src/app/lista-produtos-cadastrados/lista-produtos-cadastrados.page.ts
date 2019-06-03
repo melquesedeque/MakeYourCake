@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from '../services/produtos.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-produtos-cadastrados',
@@ -9,15 +10,22 @@ import { ProdutosService } from '../services/produtos.service';
 export class ListaProdutosCadastradosPage implements OnInit {
 
   listaProdutos:any = [];
-  constructor(private produtoService:ProdutosService) { }
+  loading;
+  constructor(private loadingController: LoadingController, private produtoService:ProdutosService) { }
 
   ionViewWillEnter(){
+    this.carregando();
     this.produtoService.buscarTodos().then(resultados => {
       this.listaProdutos = resultados;
+      this.loading.dismiss();
     });
-    /* this.produto.getAll().then(resultado => {
-      this.listaProdutos = resultado;
-    }); */
+  }
+
+  async carregando() {
+    this.loading = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    await this.loading.present();
   }
 
   ngOnInit() { }

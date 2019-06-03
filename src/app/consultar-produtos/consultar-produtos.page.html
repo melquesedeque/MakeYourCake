@@ -11,9 +11,7 @@
 <ion-content padding>
 
   <h1>Nosso Catálogo</h1>
-
-  <h3 *ngIf="listaProdutos.length == 0">Nenhum Produto Cadastrado!</h3>
-
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="teste()">
     <ion-fab-button [routerLink]="['/monte-seu-bolo']" color="danger">
       <ion-icon name="add"></ion-icon>

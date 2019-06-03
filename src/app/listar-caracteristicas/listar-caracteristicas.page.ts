@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Data } from '@angular/router';
 import { ProdutosService } from '../services/produtos.service';
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { Produto } from '../models/produto';
 import { ComprasService } from '../services/compras.service';
 import { Compras } from '../models/compras';
@@ -19,15 +19,24 @@ export class ListarCaracteristicasPage implements OnInit {
   verificar: boolean = false;
   produtoObjeto: Produto = new Produto;
   compras:Compras = new Compras;
-
-  constructor(private compraService: ComprasService, private pegarIdBolo: ActivatedRoute, private toast: ToastController, private produtoService: ProdutosService, private rotas: Router, private vibracao: Vibration) { }
+  loading;
+  constructor(private loadingController: LoadingController, private compraService: ComprasService, private pegarIdBolo: ActivatedRoute, private toast: ToastController, private produtoService: ProdutosService, private rotas: Router, private vibracao: Vibration) { }
 
   ionViewWillEnter() {
+    this.carregando();
     this.id = this.pegarIdBolo.snapshot.params['id'];
     this.produtoService.buscar(this.id).then(resultado => {
       this.produtoObjeto = resultado;
+      this.loading.dismiss();
     });
   }
+
+  async carregando() {
+    this.loading = await this.loadingController.create({
+     message: 'Carregando...',
+   });
+   await this.loading.present();
+ }
 
   comprar() {
     let data:Date = new Date;
